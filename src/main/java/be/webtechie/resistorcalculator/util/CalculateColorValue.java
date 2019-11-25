@@ -13,7 +13,7 @@ public class CalculateColorValue {
      * Calculates the {@link ColorValue} based on the {@link List} of {@link ColorCode}.
      * This function can calculate for 3, 4, 5 and 6 colors.
      *
-     * @param colors {@link List} of {@link ColorCode
+     * @param colors {@link List} of {@link ColorCode}
      * @return {@link ColorValue}
      */
     public static ColorValue from(List<ColorCode> colors) {
