@@ -1,5 +1,8 @@
 package be.webtechie.resistorcalculator.definition;
 
+/**
+ * Result object used in {@link be.webtechie.resistorcalculator.util.CalculateColorValue}
+ */
 public class ColorValue {
 
     final double ohm;

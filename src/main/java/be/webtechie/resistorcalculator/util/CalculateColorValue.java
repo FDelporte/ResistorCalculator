@@ -4,8 +4,18 @@ import be.webtechie.resistorcalculator.definition.ColorCode;
 import be.webtechie.resistorcalculator.definition.ColorValue;
 import java.util.List;
 
+/**
+ * Calculates the value for resistor based on the color coding.
+ */
 public class CalculateColorValue {
 
+    /**
+     * Calculates the {@link ColorValue} based on the {@link List} of {@link ColorCode}.
+     * This function can calculate for 3, 4, 5 and 6 colors.
+     *
+     * @param colors {@link List} of {@link ColorCode
+     * @return {@link ColorValue}
+     */
     public static ColorValue from(List<ColorCode> colors) {
         if (colors.get(0).getValue() == null) {
             throw new IllegalArgumentException("Color 1 can not be " + colors.get(0).name());

@@ -1,7 +1,7 @@
 package be.webtechie.resistorcalculator.definition;
 
 /**
- * Color codings used on resistors.
+ * Color coding used on resistors.
  */
 public enum ColorCode {
     BLACK(0, 0x000000, 1D, null, 250),
