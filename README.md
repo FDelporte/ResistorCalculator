@@ -65,3 +65,4 @@ These are some of the sources used to write the functions in this library
 * http://www.ohmslawcalculator.com/led-resistor-calculator
 * http://www.resistorguide.com/resistor-color-code/
 * https://learn.sparkfun.com/tutorials/resistors/decoding-resistor-markings
+* https://learn.sparkfun.com/tutorials/light-emitting-diodes-leds/all
