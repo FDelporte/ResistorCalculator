@@ -1,5 +1,7 @@
 package be.webtechie.resistorcalculator.definition;
 
+import be.webtechie.resistorcalculator.util.Convert;
+
 /**
  * Color coding used on resistors.
  */
@@ -58,5 +60,27 @@ public enum ColorCode {
 
     public Integer getTemperatureCoefficient() {
         return temperatureCoefficient;
+    }
+
+    public static String toMarkdown() {
+        StringBuilder rt = new StringBuilder();
+        rt.append("| Color | HEX color | Value | Multiplier | Tolerance (%) | Temp. coeff. (ppm/K) |");
+        rt.append(System.lineSeparator());
+        rt.append("| :---: | :---: | :---: | :---: | :---: | :---: |");
+        rt.append(System.lineSeparator());
+
+        for (ColorCode colorCode : ColorCode.values()) {
+            rt.append("| ").append(colorCode.name())
+                    .append(" | ").append(Convert.toHexColorString(colorCode.getColor()))
+                    .append(" | ").append(colorCode.getValue() == null ? "" : colorCode.getValue())
+                    .append(" | ").append(Convert.toOhmString(colorCode.getMultiplier()))
+                    .append(" | ").append(colorCode.getTolerance() == null ? "" : colorCode.getTolerance())
+                    .append(" | ").append(colorCode.getTemperatureCoefficient() == null ? "" : colorCode.getTemperatureCoefficient())
+                    .append(" |")
+                    .append(System.lineSeparator());
+
+        }
+
+        return rt.toString();
     }
 }

@@ -6,7 +6,7 @@
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>PiHeaders</name>
+    <name>Resistor calculator</name>
     <description>Java library to calculate resistor values and their use in circuits</description>
     <url>https://github.com/FDelporte/ResistorCalculator</url>
 
