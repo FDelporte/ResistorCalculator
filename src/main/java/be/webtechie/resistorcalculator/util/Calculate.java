@@ -1,22 +1,23 @@
 package be.webtechie.resistorcalculator.util;
 
 import be.webtechie.resistorcalculator.definition.ColorCode;
-import be.webtechie.resistorcalculator.definition.ColorValue;
+import be.webtechie.resistorcalculator.definition.ResistorValue;
 import java.util.List;
 
 /**
- * Calculates the value for resistor based on the color coding.
+ * Different resistor calculation methods.
  */
-public class CalculateColorValue {
+public class Calculate {
 
     /**
-     * Calculates the {@link ColorValue} based on the {@link List} of {@link ColorCode}.
+     * Calculates the {@link ResistorValue} based on the {@link List} of {@link ColorCode}.
      * This function can calculate for 3, 4, 5 and 6 colors.
      *
-     * @param colors {@link List} of {@link ColorCode}
-     * @return {@link ColorValue}
+     * @param colors {@link List} of {@link ColorCode} with 3 to 6 items
+     * @return {@link ResistorValue} or {@link IllegalArgumentException} when a {@link ColorCode} is given 
+     * which can not be used at a given position.
      */
-    public static ColorValue from(List<ColorCode> colors) {
+    public static ResistorValue resistorValue(List<ColorCode> colors) throws IllegalArgumentException {
         if (colors.get(0).getValue() == null) {
             throw new IllegalArgumentException("Color 1 can not be " + colors.get(0).name());
         }
@@ -43,7 +44,7 @@ public class CalculateColorValue {
                 tolerance = colors.size() == 3 ? ColorCode.NONE.getTolerance()
                         : colors.get(3).getTolerance();
 
-                return new ColorValue(value, tolerance);
+                return new ResistorValue(value, tolerance);
 
             case 5:
             case 6:
@@ -65,16 +66,48 @@ public class CalculateColorValue {
                 tolerance = colors.get(4).getTolerance();
 
                 if (colors.size() == 5) {
-                    return new ColorValue(value, tolerance);
+                    return new ResistorValue(value, tolerance);
                 } else {
                     if (colors.get(5).getTemperatureCoefficient() == null) {
                         throw new IllegalArgumentException("Color 6 can not be " + colors.get(5).name());
                     }
 
-                    return new ColorValue(value, tolerance, colors.get(5).getTemperatureCoefficient());
+                    return new ResistorValue(value, tolerance, colors.get(5).getTemperatureCoefficient());
                 }
             default:
                 throw new IllegalArgumentException("Number of colors should be 3, 4, 5 or 6");
         }
+    }
+
+    /**
+     * Calculate the total Ohm value for a list of serial resistors.
+     *
+     * @param values {@link List} of {@link Double} Ohm values
+     * @return The calculate total Ohm value
+     */
+    public static double serial(List<Double> values) {
+        return values.stream().reduce(0D, (a, b) -> a + b);
+    }
+
+    /**
+     * Calculate the total Ohm value for a list of parallel resistors.
+     *
+     * @param values {@link List} of {@link Double} Ohm values
+     * @return The calculate total Ohm value
+     */
+    public static double parallel(List<Double> values) {
+        return 1 / values.stream().reduce(0D, (a, b) -> a + (1/b));
+    }
+
+    /**
+     * Calculate the required resistor Ohm value for a LED.
+     *
+     * @param sourceVoltage The source voltage in Volt
+     * @param ledVoltage The LED voltage in Volt
+     * @param ledAmpere The LED current in Ampere
+     * @return The resister value in Ohm
+     */
+    public static long resistorForLed(double sourceVoltage, double ledVoltage, double ledAmpere) {
+        return Math.round((sourceVoltage - ledVoltage) / ledAmpere);
     }
 }

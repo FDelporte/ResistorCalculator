@@ -1,49 +1,13 @@
 # Resistor Calculator
-Java library to calculate resistor values based on the color coding and their use in circuits.
+Java library to calculate resistor values based on the color coding and their use in electronic circuits.
 
 ## How to use
 
-Example code:
+### Resistor color coding
 
-```
-System.out.println("Value for resistor with 3 colors ORANGE-ORANGE-BROWN");
-ColorValue value3band = CalculateColorValue.from(
-        Arrays.asList(ColorCode.ORANGE, ColorCode.ORANGE, ColorCode.BROWN)
-);
-System.out.println(Convert.toOhmString(value3band.getOhm()));
-System.out.println(value3band.getTolerance() + "%");
+Available as ColorCode.BLACK, ColorCode.BROWN... and includes all values listed in this table:
 
-System.out.println("-----------------------------------------------------------------");
-
-System.out.println("Value for resistor with 6 colors ORANGE-RED-BROWN-SILVER-BROWN-RED");
-ColorValue value6band = CalculateColorValue.from(
-        Arrays.asList(
-                ColorCode.ORANGE, ColorCode.WHITE, ColorCode.BLACK,
-                ColorCode.SILVER, ColorCode.BROWN, ColorCode.RED
-        )
-);
-
-System.out.println(Convert.toOhmString(value6band.getOhm()));
-System.out.println(value6band.getTolerance() + "%");
-System.out.println(value6band.getTemperatureCoefficient() + "ppm/K");
-```
-
-Result:
-
-```
-Value for resistor with 3 colors ORANGE-ORANGE-BROWN
-330Ω
-20.0%
------------------------------------------------------------------
-Value for resistor with 6 colors ORANGE-RED-BROWN-SILVER-BROWN-RED
-3.9Ω
-1.0%
-50ppm/K
-```
-
-### ColorCode definition
-
-| Color | HEX color | Value | Multiplier | Tolerance (%) | Temp. coeff. (ppm/K) |
+| ColorCode | HEX color | Value | Multiplier | Tolerance (%) | Temp. coeff. (ppm/K) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | BLACK | #000000 | 0 | 1Ω |  | 250 |
 | BROWN | #6f370f | 1 | 10Ω | 1.0 | 100 |
@@ -58,6 +22,50 @@ Value for resistor with 6 colors ORANGE-RED-BROWN-SILVER-BROWN-RED
 | GOLD | #ffd700 |  | 0.1Ω | 5.0 |  |
 | SILVER | #c0c0c0 |  | 0.01Ω | 10.0 |  |
 | NONE |  |  |  | 20.0 |  |
+
+### Calculate value of a resistor based on 3, 4, 5 or 6 ColorCodes
+
+#### Example with 3 ColorCodes
+
+```
+ColorValue value3band = Calculate.resistorValue(
+        Arrays.asList(ColorCode.ORANGE, ColorCode.ORANGE, ColorCode.BROWN)
+);
+System.out.println(Convert.toOhmString(value3band.getOhm()));           // Result: 330Ω
+System.out.println(value3band.getTolerance() + "%");                    // Result: 20.0%
+```
+
+#### Example with 6 ColorCodes
+
+```
+ColorValue value6band = Calculate.resistorValue(
+        Arrays.asList(
+                ColorCode.ORANGE, ColorCode.WHITE, ColorCode.BLACK,
+                ColorCode.SILVER, ColorCode.BROWN, ColorCode.RED
+        )
+);
+
+System.out.println(Convert.toOhmString(value6band.getOhm()));           // Result: 3.9Ω
+System.out.println(value6band.getTolerance() + "%");                    // Result: 1.0%
+System.out.println(value6band.getTemperatureCoefficient() + "ppm/K");   // Result: 50ppm/K
+```
+
+### Calculate required resistor value for a LED
+
+```
+// Calculate.resistorForLed(double sourceVoltage, double ledVoltage, double ledAmpere)
+System.out.println(Calculate.resistorForLed(3.3, 2.2, 0.02));           // Result: 55
+```
+
+### Calculate total value for resistors in serial or parallel
+
+```
+// Calculate.serial(List<Double> values) {
+System.out.println(Calculate.serial(Arrays.asList(2D, 5D, 7D)));        // Result: 14
+    
+// Calculate.parallel(List<Double> values)
+System.out.println(Calculate.parallel(Arrays.asList(10D, 2D, 1D)));     // Result: 0.625
+```
 
 ## Read more
 These are some of the sources used to write the functions in this library

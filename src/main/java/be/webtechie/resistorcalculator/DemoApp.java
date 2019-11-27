@@ -1,15 +1,14 @@
 package be.webtechie.resistorcalculator;
 
 import be.webtechie.resistorcalculator.definition.ColorCode;
-import be.webtechie.resistorcalculator.definition.ColorValue;
-import be.webtechie.resistorcalculator.util.CalculateColorValue;
+import be.webtechie.resistorcalculator.definition.ResistorValue;
+import be.webtechie.resistorcalculator.util.Calculate;
 import be.webtechie.resistorcalculator.util.Convert;
 import java.util.Arrays;
 
 public class DemoApp {
     public static void main(String[] args) {
-        System.out.println("Value for resistor with 3 colors ORANGE-ORANGE-BROWN");
-        ColorValue value3band = CalculateColorValue.from(
+        ResistorValue value3band = Calculate.resistorValue(
                 Arrays.asList(ColorCode.ORANGE, ColorCode.ORANGE, ColorCode.BROWN)
         );
         System.out.println(Convert.toOhmString(value3band.getOhm()));
@@ -17,8 +16,7 @@ public class DemoApp {
 
         System.out.println("-----------------------------------------------------------------");
 
-        System.out.println("Value for resistor with 6 colors ORANGE-RED-BROWN-SILVER-BROWN-RED");
-        ColorValue value6band = CalculateColorValue.from(
+        ResistorValue value6band = Calculate.resistorValue(
                 Arrays.asList(
                         ColorCode.ORANGE, ColorCode.WHITE, ColorCode.BLACK,
                         ColorCode.SILVER, ColorCode.BROWN, ColorCode.RED

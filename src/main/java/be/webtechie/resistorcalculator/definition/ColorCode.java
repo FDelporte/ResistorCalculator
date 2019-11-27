@@ -27,12 +27,13 @@ public enum ColorCode {
     final Integer temperatureCoefficient;
 
     /**
+     * Constructor for a color code.
      *
-     * @param value
-     * @param color
-     * @param multiplier OHM value
-     * @param tolerance
-     * @param temperatureCoefficient ppm/K
+     * @param value The value in the range 0-9 or null
+     * @param color The HEX color code
+     * @param multiplier The multiplier
+     * @param tolerance The tolerance value in %
+     * @param temperatureCoefficient The temperature coefficient in ppm/K
      */
     ColorCode(Integer value, Integer color, Double multiplier, Double tolerance, Integer temperatureCoefficient) {
         this.value = value;
@@ -42,29 +43,47 @@ public enum ColorCode {
         this.temperatureCoefficient = temperatureCoefficient;
     }
 
+    /**
+     * @return The value in the range 0-9 or null if not applicable
+     */
     public Integer getValue() {
         return value;
     }
 
+    /**
+     * @return The HEX color code or null if not applicable
+     */
     public Integer getColor() {
         return color;
     }
 
+    /**
+     * @return The multiplier or null if not applicable
+     */
     public Double getMultiplier() {
         return multiplier;
     }
 
+    /**
+     * @return The tolerance value in % or null if not applicable
+     */
     public Double getTolerance() {
         return tolerance;
     }
 
+    /**
+     * @return The temperature coefficient in ppm/K or null if not applicable
+     */
     public Integer getTemperatureCoefficient() {
         return temperatureCoefficient;
     }
 
+    /**
+     * @return All the color codes in markdown table format
+     */
     public static String toMarkdown() {
         StringBuilder rt = new StringBuilder();
-        rt.append("| Color | HEX color | Value | Multiplier | Tolerance (%) | Temp. coeff. (ppm/K) |");
+        rt.append("| ColorCode | HEX color | Value | Multiplier | Tolerance (%) | Temp. coeff. (ppm/K) |");
         rt.append(System.lineSeparator());
         rt.append("| :---: | :---: | :---: | :---: | :---: | :---: |");
         rt.append(System.lineSeparator());
