@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.webtechie</groupId>
     <artifactId>resistor-calculator</artifactId>
-    <version>0.0.4</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>Resistor calculator</name>

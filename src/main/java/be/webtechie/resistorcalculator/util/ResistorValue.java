@@ -1,4 +1,4 @@
-package be.webtechie.resistorcalculator.definition;
+package be.webtechie.resistorcalculator.util;
 
 /**
  * Result object used to return the value of a resistor.

@@ -1,7 +1,6 @@
 package be.webtechie.resistorcalculator.util;
 
 import be.webtechie.resistorcalculator.definition.ColorCode;
-import be.webtechie.resistorcalculator.definition.ResistorValue;
 import java.util.List;
 
 /**

@@ -1,7 +1,7 @@
 package be.webtechie.resistorcalculator;
 
 import be.webtechie.resistorcalculator.definition.ColorCode;
-import be.webtechie.resistorcalculator.definition.ResistorValue;
+import be.webtechie.resistorcalculator.util.ResistorValue;
 import be.webtechie.resistorcalculator.util.Calculate;
 import be.webtechie.resistorcalculator.util.Convert;
 import java.util.Arrays;
