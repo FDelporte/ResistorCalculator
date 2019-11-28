@@ -7,7 +7,7 @@ import be.webtechie.resistorcalculator.util.Convert;
  */
 public enum ColorCode {
     BLACK(0, 0x000000, 1D, null, 250),
-    BROWN(1, 0x7d4b2, 10D, 1D, 100),
+    BROWN(1, 0x761d1d, 10D, 1D, 100),
     RED(2, 0xcc0000, 100D, 2D, 50),
     ORANGE(3, 0xFFA500, 1000D, null, 15),
     YELLOW(4, 0xFFFF00, 10 * 1000D, 0D, 25),
