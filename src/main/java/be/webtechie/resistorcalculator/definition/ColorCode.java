@@ -7,12 +7,12 @@ import be.webtechie.resistorcalculator.util.Convert;
  */
 public enum ColorCode {
     BLACK(0, 0x000000, 1D, null, 250),
-    BROWN(1, 0x6F370F, 10D, 1D, 100),
-    RED(2, 0x800000, 100D, 2D, 50),
+    BROWN(1, 0x7d4b2, 10D, 1D, 100),
+    RED(2, 0xcc0000, 100D, 2D, 50),
     ORANGE(3, 0xFFA500, 1000D, null, 15),
     YELLOW(4, 0xFFFF00, 10 * 1000D, 0D, 25),
     GREEN(5, 0x008000, 100 * 1000D, 0.5, 20),
-    BLUE(6, 0x000080, 1000 * 1000D, 0.25, 10),
+    BLUE(6, 0x0000cc, 1000 * 1000D, 0.25, 10),
     VIOLET(7, 0xEE82EE, 10 * 1000 * 1000D, 0.1, 5),
     GREY(8, 0x808080, 100 * 1000 * 1000D, 0.25, 1),
     WHITE(9, 0xFFFFFF, 1000 * 1000 * 1000D, 0D, null),
