@@ -103,10 +103,10 @@ public class Calculate {
      *
      * @param sourceVoltage The source voltage in Volt
      * @param ledVoltage The LED voltage in Volt
-     * @param ledAmpere The LED current in Ampere
+     * @param ledCurrent The LED current in Ampere
      * @return The resister value in Ohm
      */
-    public static long resistorForLed(double sourceVoltage, double ledVoltage, double ledAmpere) {
-        return Math.round((sourceVoltage - ledVoltage) / ledAmpere);
+    public static long resistorForLed(double sourceVoltage, double ledVoltage, double ledCurrent) {
+        return Math.round((sourceVoltage - ledVoltage) / ledCurrent);
     }
 }

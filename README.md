@@ -53,7 +53,7 @@ System.out.println(value6band.getTemperatureCoefficient() + "ppm/K");   // Resul
 ### Calculate required resistor value for a LED
 
 ```
-// Calculate.resistorForLed(double sourceVoltage, double ledVoltage, double ledAmpere)
+// Calculate.resistorForLed(double sourceVoltage, double ledVoltage, double ledCurrent)
 System.out.println(Calculate.resistorForLed(3.3, 2.2, 0.02));           // Result: 55
 ```
 
